@@ -1,16 +1,21 @@
-typedef struct
-{
-    char name[32];
-    struct file *child[128]; 
-    struct folder *parent;
-} folder;
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <unistd.h>
 
 typedef struct
 {
-    int size;
+    char name[32];
+    struct fsfile *children[128]; 
+    struct fsfolder *parent;
+} fsfolder;
+
+typedef struct
+{
     char name[32];
     char* data[];
-} file;
+} fsfile;
 
 FILE* startfilesystem(){
     if(access("filesystem.fb",'wb'))
@@ -31,14 +36,15 @@ FILE* startfilesystem(){
         FILE* filesystem = fopen("filesystem.fb",'wb');
         if(filesystem!=NULL)
         {
-            folder root=(folder) {.name="root"};
-            fwrite(root, sizeof(folder));
-        } 
+            fsfolder root=(fsfolder) {.name="root"};
+            fwrite(&root, sizeof(fsfolder),1,filesystem);
+            return filesystem;
+
+        }
         else
         {
             printf("There was an error in creating the filesystem.");
             return NULL;
         }
     }
-
 }

@@ -7,10 +7,10 @@ run:
 	./main
 generate:
 	make clean
-	gcc main.c -o main
+	gcc main.c -o main -lm
 debug:
 	make clean
-	gcc main.c -o main -g
+	gcc main.c -o main -g -lm
 clean:
 	rm -f main
 	@echo Cleaned all compiled programs

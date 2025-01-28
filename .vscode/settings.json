@@ -59,6 +59,13 @@
   "files.associations": {
     "help.h": "c",
     "hello.h": "c",
-    "filesystem_operations.h": "c"
+    "filesystem_operations.h": "c",
+    "cstdlib": "cpp",
+    "typeinfo": "cpp",
+    "cmath": "cpp",
+    "1basic_operations.h": "c",
+    "2filesystem_operations.h": "c",
+    "create_filesystem.h": "c",
+    "unistd.h": "c"
   }
 }

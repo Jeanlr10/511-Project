@@ -1,6 +1,8 @@
-#include "basic_operations.h"
-#include "filesystem_operations.h"
-
+#include "./1basic_ops/1basic_ops.h"
+//#include "./2filesystem_ops/2filesystem_ops.h"
+//#include "./3file_ops/3file_ops.h"
+//#include "./4dir_ops/3dir_ops.h"
+//etc etc etc
 int main() {
     bool continueprogram = true;
     char *command = (char *)malloc(256 * sizeof(char)); // Buffer for full input
@@ -39,17 +41,28 @@ int main() {
                 strncpy(args, args_start + 1, sizeof(args) - 1); // Capture everything after '-'
             }
         }
-        printf("%s\n%s\n%s\n",command,object,args);
-
+        
+        //useful debug statements
+        //printf("%s\n%s\n%s\n",command,object,args);
+        printf("%d\n",strhash(operation));
+        
         // Handle operation
-        if (strcmp(operation, "quit") == 0) {
-            continueprogram = quit(object,args);
-        } else if (strcmp(operation, "hello") == 0) {
-            continueprogram = hello(object,args);
-        } else if (strcmp(operation, "help") == 0) {
-            continueprogram = help(object,args);
-        } else {
-            printf("Command not found. Type 'help' for assistance.\n");
+        
+        switch(strhash(operation)){
+            case 59592: // help when hashed
+                continueprogram=help(object,args);
+                break;
+            case 596582: // hello when hashed
+                continueprogram=hello(object,args);
+                break;
+            case 75332: // quit when hashed
+                continueprogram=quit(object,args);
+                break;
+            case 722703482:
+                //continueprogram=fs_cfile(object,args);
+                break;
+            default:
+                printf("Command not found. Type 'help' for assistance.");
         }
     }
 
