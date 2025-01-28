@@ -3,5 +3,5 @@ bool hello(char object[], char args[]){
     return true;
 }
 bool flibidygoober(char object[], char args[]){
-    return quit(object,args);
+    return fs_quit(object,args);
 }

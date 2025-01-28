@@ -4,6 +4,7 @@
 #include <string.h>
 #include "str_hash.h"
 
-#include "quit.h"
+#include "fs_exit.h"
+#include "fs_quit.h"
 #include "hello.h"
-#include "help.h"
+#include "fs_help.h"

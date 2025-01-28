@@ -1,4 +1,5 @@
-bool quit(char object[], char args[]){
+
+bool fs_quit(char object[], char args[]){
     if(strstr(args,"hs"))
     {
         printf("\nquit: quit [-h -hs]\n");
@@ -9,8 +10,9 @@ bool quit(char object[], char args[]){
         printf("\n\
 quit: quit [-h -hs]\n\
     Exit the file manager.\n\n\
-    Exits the file manager gracefully.\n");
+    Exits the file manager gracefully and saves the filesystem.\n");
         return true;
     }
-    return false;
+    bool stop = fs_save("a","q");
+    return !stop;
 }

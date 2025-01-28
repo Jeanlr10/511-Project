@@ -4,6 +4,7 @@ int strhash(char string[])
     int final=0;
     for(int i=strlen(string);i>0;i--)
     {
-        final+=(string[i]-'0')*pow(10,strlen(string)-i);
+        final+=(string[i]-'0')*pow(5,strlen(string)-i);
     }
+    return final;
 }

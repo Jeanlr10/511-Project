@@ -4,6 +4,7 @@ say_hello:
 run:
 	make clean
 	make generate
+	clear
 	./main
 generate:
 	make clean
