@@ -1,10 +1,13 @@
 
 #include "./2filesystem_ops/2filesystem_ops.h"
 #include "./3file_ops/3file_ops.h"
-//#include "./4dir_ops/3dir_ops.h"
+#include "./4dir_ops/4dir_ops.h"
 //etc etc etc
 #include "./1basic_ops/1basic_ops.h"
 int main() {
+    fs_init();
+    fs_Directory *workingdir;
+    workingdir=&root;
     bool continueprogram = true;
     char *command = (char *)malloc(256 * sizeof(char)); // Buffer for full input
     char *operation = (char *)malloc(64 * sizeof(char));
@@ -44,14 +47,14 @@ int main() {
         }
         
         //useful debug statements
-        printf("%s\n%s\n%s\n",command,object,args);
+        //printf("%s\n%s\n%s\n",command,object,args);
         printf("%d\n",strhash(operation));
         
         // Handle operation
         
         switch(strhash(operation)){
             case 8397: // help when hashed
-                continueprogram=fs_help(object,args);
+                continueprogram=fs_help(object,args,&root);
                 break;
             case 42392: // hello when hashed
                 continueprogram=hello(object,args);
@@ -60,17 +63,25 @@ int main() {
                 continueprogram=fs_quit(object,args);
                 break;
             case 247417:
-                continueprogram=(object,args);
+                continueprogram=fs_create(object,args,workingdir);
                 break;
             case 211667:
-                continueprogram=fs_delete(object,args);
+                continueprogram=fs_delete(object,args,workingdir);
                 break;
             case 8092:
                 fs_save(object,args);
                 break;
             case 10717:
-                fs_exit(object,args);
+                continueprogram=fs_exit(object,args);
                 break;
+            case 1987:
+                continueprogram=fs_pwd(object,args,workingdir);
+                break;
+            case 287:
+                continueprogram=fs_ls(object,args,workingdir);
+                break;
+            case 45082:
+                continueprogram=fs_mkdir(object,args,workingdir);
             default:
                 printf("Command not found. Type 'help' for assistance.");
         }

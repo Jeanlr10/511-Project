@@ -6,25 +6,31 @@
 
 #define MAX_FILES 100
 #define MAX_FILENAME 50
+typedef struct fs_Directory fs_Directory;
+typedef struct fs_File fs_File;
+
 
 typedef struct {
     char name[MAX_FILENAME];
     char content[1024]; 
-} File;
+} fs_File;
 
 typedef struct {
     char name[MAX_FILENAME];
-    File files[MAX_FILES]; 
-    int file_count;        
-} Directory;
+    fs_File files[MAX_FILES]; 
+    int file_count;
+    int child_count;
+    struct fs_Directory *parent;
+    struct fs_Directory child[MAX_FILES];
+} fs_Directory;
 
-Directory root;
+fs_Directory root;
 
 
 void fs_init(){
    FILE *file = fopen("filesystem_state.dat", "r");
     if (file) {
-        fread(&root, sizeof(Directory), 1, file);
+        fread(&root, sizeof(fs_Directory), 1, file);
         fclose(file);
         printf("Filesystem loaded successfully.\n");
     } else {
@@ -34,7 +40,7 @@ void fs_init(){
 
         FILE *new_file = fopen("filesystem_state.dat", "w");
         if (new_file) {
-            fwrite(&root, sizeof(Directory), 1, new_file);
+            fwrite(&root, sizeof(fs_Directory), 1, new_file);
             fclose(new_file);
             printf("Filesystem saved for the first time.\n");
         } else {

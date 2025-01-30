@@ -18,15 +18,15 @@ save: save [-h -hs]\n\
     FILE *file = fopen("filesystem_state.txt", "w");
     if (!file) {
         printf("Error: Could not save filesystem.\n");
-        return false;
+        return true;
     }
 
-    fprintf(file, "/%s", root.name);
+    fprintf(file, "Directory: %s\n", root.name);
     for (int i = 0; i < root.file_count; i++) {
-        fprintf(file, "#%s\n", root.files[i].name);
+        fprintf(file, "File: %s\n", root.files[i].name);
     }
 
     fclose(file);
     printf("Filesystem saved successfully.\n");
-    return true;
+    return false;
 }

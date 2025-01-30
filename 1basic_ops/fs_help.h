@@ -1,4 +1,4 @@
-bool fs_help(char object[], char args[]){
+bool fs_help(char object[], char args[],fs_Directory *root){
     if(strstr(args,"hs"))
     {
         printf("\nhelp: help [-h -hs] [pattern...]\n");
@@ -18,11 +18,11 @@ help: help [-h -hs]\n\
         return true;
     } else if(strstr(object,"create"))
     {
-        fs_create("","-h");
+        fs_create("","-h",root);
         return true;
     } else if(strstr(object,"delete"))
     {
-        fs_delete("","-h");
+        fs_delete("","-h",root);
         return true;
     } else if(strstr(object,"save"))
     {
@@ -33,10 +33,10 @@ help: help [-h -hs]\n\
         fs_exit("","-h");
         return true;
     }
-    fs_help("","hs");
+    fs_help("","hs",root);
     fs_save("","hs");
-    fs_create("","hs");
-    fs_delete("","hs");
+    fs_create("","hs",root);
+    fs_delete("","hs",root);
     fs_quit("","hs");
     fs_exit("","hs");
     

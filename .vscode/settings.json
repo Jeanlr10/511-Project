@@ -66,6 +66,10 @@
     "1basic_operations.h": "c",
     "2filesystem_operations.h": "c",
     "create_filesystem.h": "c",
-    "unistd.h": "c"
+    "unistd.h": "c",
+    "1basic_ops.h": "c",
+    "2filesystem_ops.h": "c",
+    "4dir_ops.h": "c",
+    "fs_ls.h": "c"
   }
 }
