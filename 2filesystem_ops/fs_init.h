@@ -20,12 +20,8 @@ typedef struct {
     int file_count;
     int child_count;
     struct fs_Directory *parent;
-    struct fs_Directory child[MAX_FILES];
+    struct fs_Directory *child[MAX_FILES];
 } fs_Directory;
-
-typedef struct fs_Directory fs_Directory;
-typedef struct fs_File fs_File;
-
 
 fs_Directory root;
 
