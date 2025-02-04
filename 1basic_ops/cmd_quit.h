@@ -14,5 +14,5 @@ quit: quit [-h -hs]\n\
         return true;
     }
     bool stop = fs_save("a","q");
-    return !stop;
+    return stop;
 }
