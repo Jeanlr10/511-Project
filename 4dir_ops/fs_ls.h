@@ -1,7 +1,7 @@
 bool fs_ls(char object[], char args[],fs_Directory *workingdir) {
     if(strstr(args,"hs"))
     {
-        printf("\ls: ls [-h -hs]\n");
+        printf("\nls: ls [-h -hs]\n");
         return true;
     }
     if(strstr(args,"h"))

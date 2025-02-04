@@ -4,11 +4,10 @@
 #include <string.h>
 #include <unistd.h>
 
+
+
 #define MAX_FILES 100
 #define MAX_FILENAME 50
-typedef struct fs_Directory fs_Directory;
-typedef struct fs_File fs_File;
-
 
 typedef struct {
     char name[MAX_FILENAME];
@@ -24,8 +23,11 @@ typedef struct {
     struct fs_Directory child[MAX_FILES];
 } fs_Directory;
 
-fs_Directory root;
+typedef struct fs_Directory fs_Directory;
+typedef struct fs_File fs_File;
 
+
+fs_Directory root;
 
 void fs_init(){
    FILE *file = fopen("filesystem_state.dat", "r");

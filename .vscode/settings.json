@@ -70,6 +70,12 @@
     "1basic_ops.h": "c",
     "2filesystem_ops.h": "c",
     "4dir_ops.h": "c",
-    "fs_ls.h": "c"
-  }
+    "fs_ls.h": "c",
+    "cmd_save.h": "c",
+    "cmd_exit.h": "c",
+    "cmd_quit.h": "c",
+    "string.h": "c",
+    "stdbool.h": "c"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }

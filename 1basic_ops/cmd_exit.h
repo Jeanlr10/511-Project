@@ -2,7 +2,7 @@
 bool fs_exit(char object[], char args[]){
     if(strstr(args,"hs"))
     {
-        printf("\exit: exit [-h -hs]\n");
+        printf("\nexit: exit [-h -hs]\n");
         return true;
     }
     if(strstr(args,"h"))
