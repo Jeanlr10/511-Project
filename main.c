@@ -2,14 +2,14 @@
 #include "./2filesystem_ops/2filesystem_ops.h"
 #include "./3file_ops/3file_ops.h"
 #include "./4dir_ops/4dir_ops.h"
-//etc etc etc
+/*etc etc etc*/
 #include "./1basic_ops/1basic_ops.h"
 int main() {
     fs_init();
     fs_Directory *workingdir;
     workingdir=&root;
     bool continueprogram = true;
-    char *command = (char *)malloc(256 * sizeof(char)); // Buffer for full input
+    char *command = (char *)malloc(256 * sizeof(char)); /* Buffer for full input*/
     char *operation = (char *)malloc(64 * sizeof(char));
     char *object = (char *)malloc(64 * sizeof(char));
     char *args = (char *)malloc(128 * sizeof(char));
@@ -28,38 +28,38 @@ int main() {
             break;
         }
 
-        // Remove trailing newline
+        /* Remove trailing newline*/
         command[strcspn(command, "\n")] = '\0';
 
-        // Initialize components
+        /* Initialize components*/
         operation[0] = '\0';
         object[0] = '\0';
         args[0] = '\0';
 
-        // Parse input
+        /* Parse input*/
         int items_parsed = sscanf(command, "%s %s %[^\n]", operation, object, args);
 
         if (items_parsed >= 2) {
             char *args_start = strchr(command, '-');
             if (args_start != NULL) {
-                strncpy(args, args_start + 1, sizeof(args) - 1); // Capture everything after '-'
+                strncpy(args, args_start + 1, sizeof(args) - 1); /* Capture everything after '-'*/
             }
         }
         
-        //useful debug statements
-        //printf("%s\n%s\n%s\n",command,object,args);
-        printf("%d\n",strhash(operation));
+        /*useful debug statements*/
+        /*printf("%s\n%s\n%s\n",command,object,args);
+        printf("%d\n",strhash(operation));*/
         
-        // Handle operation
+        /* Handle operation*/
         
         switch(strhash(operation)){
-            case 8397: // help when hashed
+            case 8397: /* help when hashed*/
                 continueprogram=fs_help(object,args,&root);
                 break;
-            case 42392: // hello when hashed
+            case 42392: /* hello when hashed*/
                 continueprogram=hello(object,args);
                 break;
-            case 10342: // quit when hashed
+            case 10342: /* quit when hashed*/
                 continueprogram=fs_quit(object,args);
                 break;
             case 247417:
@@ -87,7 +87,7 @@ int main() {
         }
     }
 
-    // Free allocated memory
+    /* Free allocated memory*/
     free(command);
     free(operation);
     free(object);

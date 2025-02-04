@@ -22,7 +22,8 @@ save: save [-h -hs]\n\
     }
 
     fprintf(file, "Directory: %s\n", root.name);
-    for (int i = 0; i < root.file_count; i++) {
+    int i;
+    for (i = 0; i < root.file_count; i++) {
         fprintf(file, "File: %s\n", root.files[i].name);
     }
 

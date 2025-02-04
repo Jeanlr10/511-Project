@@ -2,7 +2,8 @@
 int strhash(char string[])
 {
     int final=0;
-    for(int i=strlen(string);i>0;i--)
+    int i;
+    for(i=strlen(string);i>0;i--)
     {
         final+=(string[i]-'0')*pow(5,strlen(string)-i);
     }

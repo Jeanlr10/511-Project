@@ -9,19 +9,21 @@
 #define MAX_FILES 100
 #define MAX_FILENAME 50
 
+typedef struct fs_Directory fs_Directory; 
+
 typedef struct {
     char name[MAX_FILENAME];
     char content[1024]; 
 } fs_File;
 
-typedef struct {
+struct fs_Directory {
     char name[MAX_FILENAME];
     fs_File files[MAX_FILES]; 
     int file_count;
     int child_count;
-    struct fs_Directory *parent;
-    struct fs_Directory *child[MAX_FILES];
-} fs_Directory;
+    fs_Directory *parent;
+    fs_Directory *child[MAX_FILES];
+};
 
 fs_Directory root;
 

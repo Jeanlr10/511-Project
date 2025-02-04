@@ -22,7 +22,8 @@ delete: delete [FILE] [-h -hs]\n\
         return true;
     }
     int file_index = -1;
-    for (int i = 0; i < workingdir->file_count; i++) {
+    int i;
+    for (i = 0; i < workingdir->file_count; i++) {
         if (strcmp(workingdir->files[i].name, filename) == 0) {
             file_index = i;
             break;
@@ -32,7 +33,7 @@ delete: delete [FILE] [-h -hs]\n\
         printf("Error: File '%s' not found.\n", filename);
         return true;
     }
-    for (int i = file_index; i < workingdir->file_count - 1; i++) {
+    for (i = file_index; i < workingdir->file_count - 1; i++) {
         workingdir->files[i] = workingdir->files[i + 1];
     }
     workingdir->file_count--;

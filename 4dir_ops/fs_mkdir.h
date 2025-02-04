@@ -20,7 +20,8 @@ nmkdir: mkdir [directory name] [-h -hs]\n\
     if (dirname == NULL || strlen(dirname) == 0) {
         printf("Error: Invalid filename.\n");
     }
-    for (int i = 0; i < workingdir->file_count; i++) {
+    int i;
+    for (i = 0; i < workingdir->file_count; i++) {
         if (strcmp(workingdir->child[i]->name, dirname) == 0) {
             printf("Error: File '%s' already exists.\n", dirname);
         }

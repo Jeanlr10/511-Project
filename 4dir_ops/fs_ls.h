@@ -11,7 +11,8 @@ ls: ls [-h -hs]\n\
     Returns all files and directories in the current directory.\n\n");
         return true;
     }
-    for(int i;i++;i<MAX_FILES-1)
+    int i;
+    for(i=0;i++;i<MAX_FILES-1)
     {
         if(workingdir->files[i].name!=NULL)
         {

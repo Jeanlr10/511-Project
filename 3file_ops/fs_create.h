@@ -19,7 +19,8 @@ create: create [FILE] [-h -hs]\n\
     if (filename == NULL || strlen(filename) == 0) {
         printf("Error: Invalid filename.\n");
     }
-    for (int i = 0; i < workingdir->file_count; i++) {
+    int i;
+    for (i = 0; i < workingdir->file_count; i++) {
         if (strcmp(workingdir->files[i].name, filename) == 0) {
             printf("Error: File '%s' already exists.\n", filename);
         }
