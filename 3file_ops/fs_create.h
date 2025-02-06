@@ -14,7 +14,6 @@ create: create [FILE] [-h -hs]\n\
         return true;
     }
     char filename[strlen(object)];
-    printf("%s\n",filename);
     strcpy(filename,object);
     if (filename == NULL || strlen(filename) == 0) {
         printf("Error: Invalid filename.\n");

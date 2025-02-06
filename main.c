@@ -47,8 +47,8 @@ int main() {
         }
         
         /*useful debug statements*/
-        /*printf("%s\n%s\n%s\n",command,object,args);
-        printf("%d\n",strhash(operation));*/
+        /*printf("%s\n%s\n%s\n",command,object,args);*/
+        /*printf("%d\n",strhash(operation));*/
         
         /* Handle operation*/
         
