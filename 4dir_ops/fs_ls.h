@@ -20,5 +20,13 @@ ls: ls [-h -hs]\n\
         }
         
     }
+    for(i=0;i++;i<MAX_FILES-1)
+    {
+        if(workingdir->files[i].name!=NULL)
+        {
+            printf("%s  %d\n",workingdir->files[i].name,i);
+        }
+        
+    }
     return true;
 }

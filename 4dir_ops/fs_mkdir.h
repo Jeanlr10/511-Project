@@ -29,7 +29,10 @@ nmkdir: mkdir [directory name] [-h -hs]\n\
     if (workingdir->child_count >= MAX_FILES) {
         printf("Error: Maximum file limit reached.\n");
     }
-    strcpy(workingdir->child[workingdir->child_count]->name, dirname);
+    fs_Directory newdir;
+    strcpy(newdir.name, dirname);
+    workingdir->child[workingdir->child_count]=&newdir;
+    
     workingdir->child_count++;
 
     printf("Directory '%s' created successfully.\n", dirname);
