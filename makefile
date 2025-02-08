@@ -12,6 +12,7 @@ generate:
 debug:
 	make clean
 	gcc main.c -o main -g -lm
+	gdb main
 clean:
 	rm -f main
 	@echo Cleaned all compiled programs

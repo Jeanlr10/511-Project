@@ -48,7 +48,7 @@ int main() {
         
         /*useful debug statements*/
         /*printf("%s\n%s\n%s\n",command,object,args);*/
-        /*printf("%d\n",strhash(operation));*/
+        printf("%d\n",strhash(operation));
         
         /* Handle operation*/
         
@@ -78,10 +78,15 @@ int main() {
                 continueprogram=fs_pwd(object,args,workingdir);
                 break;
             case 287:
+                printf("%s",workingdir->name);
                 continueprogram=fs_ls(object,args,workingdir);
                 break;
             case 45082:
                 continueprogram=fs_mkdir(object,args,workingdir);
+                break;
+            case 46332:
+                continueprogram=fs_mkdir(object,args,workingdir);
+                break;
             default:
                 printf("Command not found. Type 'help' for assistance.");
         }
