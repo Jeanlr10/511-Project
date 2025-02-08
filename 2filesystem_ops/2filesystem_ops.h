@@ -8,3 +8,4 @@
 #include "fs_init.h"
 #include "cmd_save.h"
 #include "cmd_pwd.h"
+#include "cmd_quit.h"

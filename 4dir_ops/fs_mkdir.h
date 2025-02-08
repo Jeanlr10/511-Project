@@ -15,25 +15,34 @@ nmkdir: mkdir [directory name] [-h -hs]\n\
         return true;
     }
     char dirname[strlen(object)];
-    printf("%s\n",dirname);
     strcpy(dirname,object);
     if (dirname == NULL || strlen(dirname) == 0) {
         printf("Error: Invalid filename.\n");
     }
     int i;
-    for (i = 0; i < workingdir->file_count; i++) {
-        if (strcmp(workingdir->child[i]->name, dirname) == 0) {
+    bool alreadyexists = false;
+    for (i = 0; i < workingdir->child_count; i++) {
+        if (workingdir->child[i] != NULL && strcmp(workingdir->child[i]->name, dirname) == 0){
             printf("Error: File '%s' already exists.\n", dirname);
+            alreadyexists=true;
         }
     }
-    if (workingdir->child_count >= MAX_FILES) {
-        printf("Error: Maximum file limit reached.\n");
-    }
-    fs_Directory newdir;
-    strcpy(newdir.name, dirname);
-    workingdir->child[workingdir->child_count]=&newdir;
-    
-    workingdir->child_count++;
+    if(!alreadyexists){
+        if (workingdir->child_count >= MAX_FILES) {
+            printf("Error: Maximum directory limit reached.\n");
+        }
+        fs_Directory *newdir = malloc(sizeof(fs_Directory));
+        if (newdir == NULL) {
+            printf("Memory allocation failed.\n");
+            return false;
+        }
+        strcpy(newdir->name, dirname);
+        newdir->child[0] = workingdir;
+        workingdir->child[workingdir->child_count] = newdir;
+        
+        workingdir->child_count++;
 
-    printf("Directory '%s' created successfully.\n", dirname);
+        printf("Directory '%s' created successfully.\n", dirname);
+    }
+    return true;
 }

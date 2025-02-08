@@ -1,2 +1,0 @@
-Directory: root
-File: 1

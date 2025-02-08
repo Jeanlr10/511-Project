@@ -75,7 +75,10 @@
     "cmd_exit.h": "c",
     "cmd_quit.h": "c",
     "string.h": "c",
-    "stdbool.h": "c"
+    "stdbool.h": "c",
+    "stdlib.h": "c",
+    "stdio.h": "c",
+    "cmd_help.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
