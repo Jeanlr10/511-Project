@@ -51,8 +51,14 @@ help: help [-h -hs]\n\
     fs_save("", "hs");  /* Show short help for save */
     fs_create("", "hs", root);  /* Show short help for 'create' */
     fs_delete("", "hs", root);  /* Show short help for 'delete' */
+    fs_cat("", "hs",root);
+    fs_pwd("", "hs",root);
+    fs_mkdir("", "hs",root);
+    fs_rmdir("", "hs",root);
+    fs_ls("", "hs",root);
+    fs_cd("", "hs",root);
     fs_quit("", "hs");  /* Show short help for 'quit' */
-    fs_exit("", "hs");  /* Show short help for 'exit' */
+    
     
     return true;  /* Return true to indicate help was shown */
 }

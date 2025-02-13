@@ -33,14 +33,14 @@ create: create [FILE] [-h -hs]\n\
     for (i = 0; i < workingdir->file_count; i++) {
         if (strcmp(workingdir->files[i].name, filename) == 0) {
             printf("Error: File '%s' already exists.\n", filename);
-            return false;  /* Return false to indicate the file already exists */
+            return true;  /* Return true to continue the program */
         }
     }
 
     /* Check if the maximum number of files has been reached in the directory */
     if (workingdir->file_count >= MAX_FILES) {
         printf("Error: Maximum file limit reached.\n");
-        return false;  /* Return false to indicate the directory is full */
+        return true;  /* Return true to continue the program */
     }
 
     /* Create the new file by assigning the filename and initializing the content */
@@ -52,5 +52,5 @@ create: create [FILE] [-h -hs]\n\
 
     /* Print a success message */
     printf("File '%s' created successfully.\n", filename);
-    return true;  /* Return true indicating the file was created successfully */
+    return true;  /* Return true to continue the program */
 }

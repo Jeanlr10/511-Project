@@ -22,19 +22,19 @@ ls: ls [-h -hs]\n\
         /* Check if the child directory exists (non-null) */
         if (workingdir->child[i] && workingdir->child[i]->name != NULL) {
             /* Print the directory name with color formatting */
-            printf(BLUE "\t%s\n" RESET, workingdir->child[i]->name);
+            printf(BLUE "\t%s" RESET, workingdir->child[i]->name);
         }
     }
 
     /* Print the list of files */
-    printf("Files:\n");
+    printf("\nFiles:\n");
 
     /* Loop through the files in the working directory */
     for (i = 0; i < MAX_FILES - 1; i++) {
         /* Check if the file has a name (not empty) */
         if (workingdir->files[i].name[0] != '\0') {
             /* Print the file name */
-            printf("\t%s\n", workingdir->files[i].name);
+            printf("\t%s", workingdir->files[i].name);
         }
     }
 

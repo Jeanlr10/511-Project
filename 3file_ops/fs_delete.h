@@ -25,7 +25,7 @@ delete: delete [FILE] [-h -hs]\n\
     /* Check if the filename is invalid (NULL or empty) */
     if (filename == NULL || strlen(filename) == 0) {
         printf("Error: Invalid filename.\n");
-        return true;  /* Return true as the input is invalid but we don’t exit the program */
+        return true;  /* Return true to continue hte program */
     }
 
     /* Try to find the file in the working directory */
@@ -42,7 +42,7 @@ delete: delete [FILE] [-h -hs]\n\
     /* If file_index is still -1, the file was not found */
     if (file_index == -1) {
         printf("Error: File '%s' not found.\n", filename);
-        return true;  /* Return true to indicate that we finished handling the request */
+        return true;  /* Return true to continue the program */
     }
 
     /* Shift the remaining files to fill the gap after the deleted file */

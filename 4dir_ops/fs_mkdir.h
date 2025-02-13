@@ -23,7 +23,7 @@ nmkdir: mkdir [directory name] [-h -hs]\n\
     bool alreadyexists = false;
     for (i = 0; i < workingdir->child_count; i++) {
         if (workingdir->child[i] != NULL && strcmp(workingdir->child[i]->name, dirname) == 0){
-            printf("Error: File '%s' already exists.\n", dirname);
+            printf("Error: Folder '%s' already exists.\n", dirname);
             alreadyexists=true;
         }
     }
@@ -38,6 +38,7 @@ nmkdir: mkdir [directory name] [-h -hs]\n\
         }
         strcpy(newdir->name, dirname);
         newdir->child[0] = workingdir;
+        newdir->child_count=1;
         workingdir->child[workingdir->child_count] = newdir;
         
         workingdir->child_count++;

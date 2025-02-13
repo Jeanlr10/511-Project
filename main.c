@@ -57,7 +57,7 @@ int main() {
         
         /* Debug: Uncomment to print parsed input values for testing purposes */
         /* printf("%s\n%s\n%s\n", command, object, args); */
-        /* printf("%d\n", strhash(operation)); */
+        /* printf("%d\n", strhash(operation)); /**/
 
         /* Handle operation based on the hashed value of the command */
         switch(strhash(operation)){
@@ -80,7 +80,7 @@ int main() {
                 fs_save(object, args);
                 break;
             case 10717:  /* 'exit' command */
-                continueprogram = fs_exit(object, args);
+                continueprogram = fs_quit(object, args);
                 break;
             case 1987:  /* 'pwd' command */
                 continueprogram = fs_pwd(object, args, workingdir);
@@ -93,6 +93,12 @@ int main() {
                 break;
             case 46332:  /* Another 'mkdir' command (seems redundant) */
                 continueprogram = fs_mkdir(object, args, workingdir);
+                break;
+            /*case 8217:
+                continueprogram = fs_edit(object,args,workingdir);
+                break;*/
+            case 212:
+                fs_cd(object,args,&workingdir);
                 break;
             default:  /* If command is not recognized */
                 printf("Command not found. Type 'help' for assistance.");

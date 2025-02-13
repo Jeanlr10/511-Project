@@ -27,9 +27,10 @@ struct fs_Directory {
 };
 
 fs_Directory root;  /* Declare the root directory */
-
 /* Function to initialize the filesystem */
 void fs_init() {
+    root.child[0]=&root;
+    root.child_count++;
     /* Try to open the filesystem state file to load existing filesystem data */
     FILE *file = fopen("filesystem_state.dat", "r");
     if (file) {
