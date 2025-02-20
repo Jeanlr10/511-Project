@@ -57,7 +57,7 @@ int main() {
         
         /* Debug: Uncomment to print parsed input values for testing purposes */
         /* printf("%s\n%s\n%s\n", command, object, args); */
-        /* printf("%d\n", strhash(operation)); /**/
+        /*printf("%d\n", strhash(operation)); /**/
 
         /* Handle operation based on the hashed value of the command */
         switch(strhash(operation)){
@@ -94,9 +94,12 @@ int main() {
             case 46332:  /* Another 'mkdir' command (seems redundant) */
                 continueprogram = fs_mkdir(object, args, workingdir);
                 break;
-            /*case 8217:
+            case 8217:
                 continueprogram = fs_edit(object,args,workingdir);
-                break;*/
+                break;/**/
+            case 1517:
+                fs_cat(object,args,workingdir);
+                break;
             case 212:
                 fs_cd(object,args,&workingdir);
                 break;

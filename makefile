@@ -8,7 +8,7 @@ run:
 	./main
 generate:
 	make clean
-	gcc main.c -o main -lm -ansi
+	gcc main.c -o main -lm -ansi -lncurses
 debug:
 	make clean
 	gcc main.c -o main -g -lm

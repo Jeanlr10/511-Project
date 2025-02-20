@@ -24,7 +24,7 @@ cd: cd [directory name] [-h -hs]\n\
 
     /* Handle ".." for moving to the parent directory*/
     if (strcmp(dirname, "..") == 0) {
-        workingdir = &(*workingdir)->child[0];
+        *workingdir = (*workingdir)->child[0];
         return true;
     }
 

@@ -24,16 +24,25 @@ quit: quit [-h -hs -f -s]\n\
         bool stop = fs_save("", "");  /* Save the filesystem */
         return stop;  /* Return the status of fs_save (false if successful, true if not) */
     }
-    while(true){
-        printf("Would you like to save the filesystem?(Y/N)\n\t>");
-        int choice = scanf(" %c");
-        if(choice=='Y'||choice=='y'){
-            bool stop = fs_save("","");
+    while (true) {
+        printf("Would you like to save the filesystem? (Y/N)\n\t>");
+        char choice; /* Store the character input*/
+        int result = scanf(" %c", &choice); /* Read input correctly*/
+    
+        if (result != 1) { /* Ensure input was read successfully*/
+            printf("\nInput error, please reenter:\n");
+            while (getchar() != '\n'); /* Clear input buffer*/
+            continue;
+        }
+    
+        if (choice == 'Y' || choice == 'y') {
+            bool stop = fs_save("", "");
             return stop;
-        } else if (choice=='N'||choice=='n')
-        {
+        } else if (choice == 'N' || choice == 'n') {
             return false;
         }
+    
         printf("\nBad option, please reenter:\n");
+        while (getchar() != '\n'); /* Clear input buffer for invalid input*/
     }
 }
