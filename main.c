@@ -98,7 +98,7 @@ int main() {
                 continueprogram = fs_edit(object,args,workingdir);
                 break;/**/
             case 1517:
-                fs_cat(object,args,workingdir);
+                cmd_cat(object,args,workingdir);
                 break;
             case 212:
                 fs_cd(object,args,&workingdir);

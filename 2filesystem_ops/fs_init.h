@@ -57,3 +57,5 @@ void fs_init() {
         }
     }
 }
+load_directory(){}
+load_file(){}

@@ -17,7 +17,8 @@ bool fs_edit(char object[],char args[], fs_Directory *workingdir) {
     }
     
     if (!editfile) {
-        return false;  /* File not found*/
+        printf("File Not Found"); /* File not found*/
+        return true;  
     }
 
     initscr();

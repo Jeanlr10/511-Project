@@ -48,6 +48,9 @@ delete: delete [FILE] [-h -hs]\n\
     /* Shift the remaining files to fill the gap after the deleted file */
     for (i = file_index; i < workingdir->file_count - 1; i++) {
         workingdir->files[i] = workingdir->files[i + 1];
+        if(workingdir->files[i+1].name[0]==NULL){
+            workingdir->files[i].name[0]='\0';
+        }
     }
 
     /* Decrease the file count to reflect the file removal */

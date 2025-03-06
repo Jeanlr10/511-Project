@@ -1,5 +1,5 @@
 
-bool fs_cat(char object[], char args[], fs_Directory *workingdir) {
+bool cmd_cat(char object[], char args[], fs_Directory *workingdir) {
     /* Check if 'hs' (help short) is provided in the arguments */
     if(strstr(args,"hs"))
     {

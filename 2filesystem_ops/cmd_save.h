@@ -20,7 +20,7 @@ save: save [-h -hs]\n\
     }
 
     /* Attempt to open the file 'filesystem_state.txt' in write mode */
-    FILE *file = fopen("filesystem_state.txt", "w");
+    FILE *file = fopen("filesystem_state.dat", "w");
     if (!file) {
         /* If the file cannot be opened, print an error message */
         printf("Error: Could not save filesystem.\n");
@@ -43,3 +43,6 @@ save: save [-h -hs]\n\
     printf("Filesystem saved successfully.\n");
     return false;  /* Return false indicating the operation was completed */
 }
+
+save_directory(fs_Directory **directory){}
+save_file(fs_File **file){}
