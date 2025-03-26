@@ -11,7 +11,7 @@ generate:
 	gcc main.c -o main -lm -ansi -lncurses
 debug:
 	make clean
-	gcc main.c -o main -g -lm
+	gcc main.c -o main -g -lm -ansi -lncurses
 	gdb main
 clean:
 	rm -f main

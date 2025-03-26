@@ -79,7 +79,9 @@
     "stdlib.h": "c",
     "stdio.h": "c",
     "cmd_help.h": "c",
-    "cmd_ls.h": "c"
+    "cmd_ls.h": "c",
+    "stdint.h": "c",
+    "stat.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

@@ -8,8 +8,7 @@
 int main() {
     fs_init();  /* Initializes the file system */
     
-    fs_Directory *workingdir;  /* Pointer to the current working directory */
-    workingdir = &root;  /* Set the initial working directory to the root directory */
+    current_dir = &root;  /* Set the initial working directory to the root directory */
     
     bool continueprogram = true;  /* Boolean flag to control the program's main loop */
     
@@ -71,10 +70,10 @@ int main() {
                 continueprogram = fs_quit(object, args);
                 break;
             case 247417:  /* 'create' command */
-                continueprogram = fs_create(object, args, workingdir);
+                continueprogram = fs_create(object, args, current_dir);
                 break;
             case 211667:  /* 'delete' command */
-                continueprogram = fs_delete(object, args, workingdir);
+                continueprogram = fs_delete(object, args, current_dir);
                 break;
             case 8092:  /* 'save' command */
                 fs_save(object, args);
@@ -83,25 +82,25 @@ int main() {
                 continueprogram = fs_quit(object, args);
                 break;
             case 1987:  /* 'pwd' command */
-                continueprogram = fs_pwd(object, args, workingdir);
+                continueprogram = fs_pwd(object, args, current_dir);
                 break;
             case 287:  /* 'ls' command */
-                continueprogram = fs_ls(object, args, workingdir);
+                continueprogram = fs_ls(object, args, current_dir);
                 break;
             case 45082:  /* 'mkdir' command */
-                continueprogram = fs_mkdir(object, args, workingdir);
+                continueprogram = fs_mkdir(object, args, current_dir);
                 break;
             case 46332:  /* Another 'mkdir' command (seems redundant) */
-                continueprogram = fs_mkdir(object, args, workingdir);
+                continueprogram = fs_mkdir(object, args, current_dir);
                 break;
             case 8217:
-                continueprogram = fs_edit(object,args,workingdir);
+                continueprogram = fs_edit(object,args,current_dir);
                 break;/**/
             case 1517:
-                cmd_cat(object,args,workingdir);
+                cmd_cat(object,args,current_dir);
                 break;
             case 212:
-                fs_cd(object,args,&workingdir);
+                fs_cd(object,args,&current_dir);
                 break;
             default:  /* If command is not recognized */
                 printf("Command not found. Type 'help' for assistance.");

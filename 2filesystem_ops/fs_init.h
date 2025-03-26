@@ -1,61 +1,39 @@
+#ifndef FS_INIT_H
+#define FS_INIT_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
-#define MAX_FILES 100  /* Maximum number of files or directories in a directory */
-#define MAX_FILENAME 50  /* Maximum length of a file or directory name */
-
-/* Forward declaration of fs_Directory structure */
-typedef struct fs_Directory fs_Directory; 
-
-/* Definition of fs_File structure to represent a file */
-typedef struct {
-    char name[MAX_FILENAME];  /* Name of the file */
-    char content[1024];  /* Content of the file (up to 1024 characters) */
-} fs_File;
-
-/* Definition of fs_Directory structure representing a directory */
-struct fs_Directory {
-    char name[MAX_FILENAME];  /* Name of the directory */
-    fs_File files[MAX_FILES];  /* Array of files in the directory */
-    int file_count;  /* Number of files in the directory */
-    int child_count;  /* Number of child directories */
-    fs_Directory *parent;  /* Pointer to the parent directory */
-    fs_Directory *child[MAX_FILES];  /* Array of child directories */
-};
-
-fs_Directory root;  /* Declare the root directory */
 /* Function to initialize the filesystem */
 void fs_init() {
-    root.child[0]=&root;
-    root.child_count++;
-    /* Try to open the filesystem state file to load existing filesystem data */
-    FILE *file = fopen("filesystem_state.dat", "r");
-    if (file) {
-        /* If file exists, load the data into the root directory */
-        fread(&root, sizeof(fs_Directory), 1, file);
-        fclose(file);
-        printf("Filesystem loaded successfully.\n");
+    /* Initialize the root directory */
+    strcpy(root.name, "root");  /* Set the root directory name */
+    root.file_count = 0;  /* Initialize file count to 0 */
+    root.child_count = 0;  /* Initialize child count to 0 */
+    root.parent = NULL;    /* Root has no parent */
+    
+    /* Add self-reference as first child */
+    root.child[0] = &root;
+    root.child_count = 1;
+    
+    /* Set current directory to root */
+    current_dir = &root;
+    
+    /* Try to restore from the default backup location */
+    const char *backup_path = "./fs_metadata.bin";
+    struct stat st = {0};
+    
+    if (stat(backup_path, &st) == 0) {
+        /* Backup exists, try to restore it */
+        char restore_cmd[256] = "restore";
+        fs_restore(restore_cmd, "");
     } else {
-        /* If the file doesn't exist, initialize the root directory */
-        strcpy(root.name, "root");  /* Set the root directory name */
-        root.file_count = 0;  /* Initialize file count to 0 */
-        printf("New filesystem initialized.\n");
-
-        /* Create a new file to save the initialized filesystem */
-        FILE *new_file = fopen("filesystem_state.dat", "w");
-        if (new_file) {
-            /* Write the root directory structure to the file */
-            fwrite(&root, sizeof(fs_Directory), 1, new_file);
-            fclose(new_file);
-            printf("Filesystem saved for the first time.\n");
-        } else {
-            /* Handle error if the file cannot be created */
-            printf("Error: Unable to create filesystem file.\n");
-        }
+        printf("No existing backup found. New filesystem initialized.\n");
     }
 }
-load_directory(){}
-load_file(){}
+
+#endif /* FS_INIT_H */
