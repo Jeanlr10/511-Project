@@ -91,7 +91,7 @@ int main() {
                 continueprogram = fs_mkdir(object, args, current_dir);
                 break;
             case 46332:  /* Another 'mkdir' command (seems redundant) */
-                continueprogram = fs_mkdir(object, args, current_dir);
+                continueprogram = fs_rmdir(object, args, current_dir);
                 break;
             case 8217:
                 continueprogram = fs_edit(object,args,current_dir);

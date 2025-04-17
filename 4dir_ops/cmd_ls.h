@@ -18,7 +18,7 @@ ls: ls [-h -hs]\n\
     printf("Directories:\n");
 
     /* Loop through the child directories in the working directory */
-    for (i = 0; i < MAX_FILES - 1; i++) {
+    for (i = 1; i < workingdir->child_count; i++) {
         /* Check if the child directory exists (non-null) */
         if (workingdir->child[i] && workingdir->child[i]->name != NULL) {
             /* Print the directory name with color formatting */
@@ -30,7 +30,7 @@ ls: ls [-h -hs]\n\
     printf("\nFiles:\n");
 
     /* Loop through the files in the working directory */
-    for (i = 0; i < MAX_FILES - 1; i++) {
+    for (i = 0; i < workingdir->file_count; i++) {
         /* Check if the file has a name (not empty) */
         if (workingdir->files[i].name[0] != '\0') {
             /* Print the file name */

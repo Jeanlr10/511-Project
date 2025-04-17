@@ -30,6 +30,10 @@ rmdir: rmdir [directory name] [-h -hs]\n\
         for (i = folder_index; i < workingdir->child_count - 1; i++) {
             workingdir->child[i] = workingdir->child[i + 1];
         }
+        if(workingdir->child_count==1){
+            free(workingdir->child[1]);
+        }
+        workingdir->child_count=workingdir->child_count-1;
     }
     return true;
 }
